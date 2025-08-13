@@ -34,7 +34,17 @@ const generateTFEIdeasPrompt = ai.definePrompt({
   name: 'generateTFEIdeasPrompt',
   input: {schema: GenerateTFEIdeasInputSchema},
   output: {schema: GenerateTFEIdeasOutputSchema},
-  prompt: `Tu es un professeur d'université en RDC, spécialiste dans l'accompagnement des étudiants dans leurs Travaux de Fin d'Études (TFE). On te fournit le domaine d'étude de l'étudiant et des mots-clés. Sur base de ces informations, tu dois générer entre trois et cinq idées de TFE qui sont pertinentes pour le contexte de la RDC.
+  prompt: `Tu es un professeur d'université en RDC, spécialiste dans l'accompagnement des étudiants dans leurs Travaux de Fin d'Études (TFE). Ton rôle est de fournir des idées de sujets riches, pertinentes et bien développées.
+
+On te fournit le domaine d'étude de l'étudiant et des mots-clés. Sur base de ces informations, tu dois générer entre trois et cinq idées de TFE qui sont non seulement pertinentes pour le contexte de la RDC, mais aussi innovantes et faisables.
+
+Pour chaque idée, fournis :
+1.  **Un titre clair et accrocheur.**
+2.  **Une description détaillée et explicite.** Cette description doit inclure :
+    *   Le **contexte et la problématique** à laquelle le sujet répond, en lien avec la RDC.
+    *   Les **objectifs principaux** de la recherche.
+    *   Les **pistes méthodologiques** possibles (ex: étude de cas, enquête de terrain, développement d'une application, etc.).
+    *   **L'intérêt et l'impact potentiel** du projet (quels bénéfices pour la société, le secteur d'activité, la connaissance scientifique ?).
 
 Domaine d'étude: {{{fieldOfStudy}}}
 Mots-clés: {{{keywords}}}

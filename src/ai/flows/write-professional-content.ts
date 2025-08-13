@@ -37,13 +37,22 @@ const prompt = ai.definePrompt({
   name: 'writeProfessionalContentPrompt',
   input: {schema: WriteProfessionalContentInputSchema},
   output: {schema: WriteProfessionalContentOutputSchema},
-  prompt: `You are a professional content writer specializing in creating engaging and effective content for various platforms.
+  prompt: `Vous êtes un expert en communication digitale et un stratège de contenu spécialisé pour le public francophone, notamment en Afrique.
 
-You will generate content based on the provided topic, tailored to the specified platform and target audience. The content should be appropriate for the platform and appeal to the audience, all in French.
+  Votre mission est de générer un contenu percutant et détaillé basé sur la demande de l'utilisateur, et d'expliquer vos choix stratégiques.
 
-Topic: {{{topic}}}
-Platform: {{{platform}}}
-Audience: {{{audience}}}`,
+  1.  **Générez le contenu demandé** en l'adaptant parfaitement à la plateforme (ton, format, longueur, hashtags, etc.) et à l'audience cible. Le contenu doit être riche, informatif et engageant.
+  2.  **Après le contenu, ajoutez une section "Analyse et Recommandations"** qui explique :
+      *   **Pourquoi ce format et ce ton ont été choisis** pour la plateforme '{{{platform}}}' et l'audience '{{{audience}}}'.
+      *   **L'intérêt stratégique des éléments clés** du contenu (ex: l'accroche, l'appel à l'action, l'utilisation d'emojis ou de hashtags).
+      *   **Des conseils pour maximiser l'impact** de cette publication (ex: meilleur moment pour publier, type d'image ou de vidéo à associer, comment interagir avec les commentaires).
+
+  Demande de l'utilisateur :
+  Sujet: {{{topic}}}
+  Plateforme: {{{platform}}}
+  Audience: {{{audience}}}
+
+  Répondez en fournissant d'abord le contenu généré, suivi de la section "Analyse et Recommandations".`,
 });
 
 const writeProfessionalContentFlow = ai.defineFlow(

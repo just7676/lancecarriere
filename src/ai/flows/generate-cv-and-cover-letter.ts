@@ -41,14 +41,27 @@ const prompt = ai.definePrompt({
   input: {schema: GenerateCvAndCoverLetterInputSchema},
   output: {schema: GenerateCvAndCoverLetterOutputSchema},
   prompt: `Vous êtes un expert en recrutement spécialisé dans le marché de l'emploi congolais.
-  En utilisant les informations fournies, créez un CV et une lettre de motivation percutants pour un candidat.
-  Mettez l'accent sur la valorisation de son expérience et de ses compétences pour le marché de l'emploi congolais.
+  En utilisant les informations fournies, créez un CV et une lettre de motivation percutants et très détaillés pour un candidat.
+  Le ton doit être professionnel et le contenu doit être très riche et explicite.
 
+  Pour le CV :
+  - Structurez-le de manière claire et professionnelle (Informations personnelles, Résumé de carrière, Expérience, Formation, Compétences).
+  - Pour chaque expérience, décrivez les missions en utilisant des verbes d'action et quantifiez les résultats lorsque c'est possible.
+  - Mettez en évidence les compétences qui sont particulièrement recherchées sur le marché de l'emploi congolais.
+
+  Pour la lettre de motivation :
+  - Rédigez une lettre personnalisée qui montre l'intérêt du candidat pour le poste et l'entreprise.
+  - Expliquez clairement comment son profil (expériences et compétences) répond aux besoins du poste.
+  - Mettez en avant les bénéfices concrets qu'il pourrait apporter. La lettre doit être convaincante et donner envie au recruteur de le rencontrer.
+
+  Informations du candidat :
   Nom: {{{name}}}
   Parcours académique: {{{academicBackground}}}
   Compétences: {{{skills}}}
   Expérience: {{{experience}}}
   Informations sur le marché de l'emploi congolais: {{{jobMarket}}}
+
+  Générez le CV puis la lettre de motivation en les séparant clairement.
 
   CV:
   Lettre de motivation: `,

@@ -30,10 +30,14 @@ const prompt = ai.definePrompt({
   name: 'improveTextPrompt',
   input: {schema: ImproveTextInputSchema},
   output: {schema: ImproveTextOutputSchema},
-  prompt: `Vous êtes un expert en rédaction et correction de texte.
-  Améliorez le texte suivant en corrigeant les fautes de grammaire, d'orthographe, de ponctuation et de style.
-  Si un problème spécifique est mentionné, concentrez-vous sur sa résolution.
-  Le ton doit rester professionnel et adapté au contexte de la RDC.
+  prompt: `Vous êtes un expert en rédaction et un coach en écriture. Votre mission est d'améliorer le texte fourni et d'éduquer l'utilisateur.
+
+  1.  **Améliorez le texte suivant** en corrigeant les fautes de grammaire, d'orthographe, de ponctuation, de syntaxe et de style. Le ton doit rester professionnel et adapté au contexte de la RDC.
+  2.  **Après le texte corrigé**, ajoutez une section "Recommandations" où vous expliquez les changements les plus importants que vous avez faits et pourquoi.
+      - Mettez en évidence les types d'erreurs récurrentes.
+      - Donnez des conseils clairs pour que l'utilisateur puisse s'améliorer à l'avenir.
+      - Expliquez l'intérêt des corrections (ex: "Cette formulation est plus professionnelle car...", "L'utilisation de ce connecteur logique améliore la clarté du propos.").
+  3.  Si un problème spécifique est mentionné par l'utilisateur, concentrez-vous sur sa résolution et expliquez comment vous l'avez traité.
 
   Texte à améliorer:
   {{{text}}}
@@ -42,7 +46,7 @@ const prompt = ai.definePrompt({
   Problème spécifique à adresser: {{{problem}}}
   {{/if}}
 
-  Répondez uniquement avec le texte amélioré.`,
+  Répondez en fournissant d'abord le texte amélioré, suivi de la section "Recommandations".`,
 });
 
 const improveTextFlow = ai.defineFlow(
