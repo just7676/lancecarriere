@@ -23,7 +23,6 @@ import {
 
 import { Logo } from "@/components/app/logo";
 import TfcIdeasGenerator from "@/components/app/tfc-ideas-generator";
-import TfeIdeasGenerator from "./tfe-ideas-generator";
 import InterviewPrep from "@/components/app/interview-prep";
 import CoverLetterGenerator from "@/components/app/cover-letter-generator";
 import ContentWriter from "@/components/app/content-writer";
@@ -31,7 +30,6 @@ import TextImprover from "@/components/app/text-improver";
 
 type Feature =
   | "tfc-ideas"
-  | "tfe-ideas"
   | "interview-prep"
   | "cover-letter-generator"
   | "content-writer"
@@ -39,7 +37,6 @@ type Feature =
 
 const featureComponents = {
   "tfc-ideas": <TfcIdeasGenerator />,
-  "tfe-ideas": <TfeIdeasGenerator />,
   "interview-prep": <InterviewPrep />,
   "cover-letter-generator": <CoverLetterGenerator />,
   "content-writer": <ContentWriter />,
@@ -72,11 +69,6 @@ const featureInfo = {
     description: "Générez des idées de sujets pour votre Travail de Fin de Cycle (TFC).",
     icon: Lightbulb,
   },
-  "tfe-ideas": {
-    title: "Idées de TFE",
-    description: "Générez des idées de sujets pour votre Travail de Fin d'Études (TFE).",
-    icon: Lightbulb,
-  },
 };
 
 export function MainLayout() {
@@ -94,7 +86,7 @@ export function MainLayout() {
         <SidebarContent>
           <SidebarMenu>
             {(Object.keys(featureInfo) as Feature[]).map((key) => {
-              const { title, icon: Icon } = featureInfo[key];
+              const { title, icon: Icon } = featureInfo[key as Feature];
               return (
                 <SidebarMenuItem key={key}>
                   <SidebarMenuButton
