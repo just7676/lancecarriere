@@ -6,7 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2, Sparkles } from "lucide-react";
 
-import { generateCoverLetter, type GenerateCoverLetterOutput } from "@/ai/flows/generate-cover-letter";
+import { generateCoverLetter } from "@/ai/flows/generate-cover-letter";
+import type { GenerateCoverLetterOutput } from "@/ai/types/cover-letter-types";
 import { generateCVAdvice } from "@/ai/flows/generate-cv-advice";
 import type { GenerateCVAdviceInput, GenerateCVAdviceOutput } from "@/ai/types/cv-advice-types";
 import { useToast } from "@/hooks/use-toast";

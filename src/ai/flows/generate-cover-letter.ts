@@ -4,30 +4,15 @@
  * @fileOverview A cover letter generation AI agent.
  *
  * - generateCoverLetter - A function that handles the cover letter generation process.
- * - GenerateCoverLetterInput - The input type for the generateCoverLetter function.
- * - GenerateCoverLetterOutput - The return type for the generateCoverLetter function.
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
-
-const GenerateCoverLetterInputSchema = z.object({
-  name: z.string().describe('Your full name.'),
-  academicBackground: z.string().describe('Your academic background and qualifications.'),
-  skills: z.string().describe('Your key skills and competencies.'),
-  experience: z.string().describe('Your work experience and achievements.'),
-  jobMarket: z
-    .string()
-    .describe(
-      'Details about the job market in Congo, including relevant industries and employer expectations.'
-    ),
-});
-export type GenerateCoverLetterInput = z.infer<typeof GenerateCoverLetterInputSchema>;
-
-const GenerateCoverLetterOutputSchema = z.object({
-  coverLetter: z.string().describe('The generated cover letter content.'),
-});
-export type GenerateCoverLetterOutput = z.infer<typeof GenerateCoverLetterOutputSchema>;
+import {
+  GenerateCoverLetterInputSchema,
+  GenerateCoverLetterOutputSchema,
+  type GenerateCoverLetterInput,
+  type GenerateCoverLetterOutput,
+} from '@/ai/types/cover-letter-types';
 
 export async function generateCoverLetter(
   input: GenerateCoverLetterInput

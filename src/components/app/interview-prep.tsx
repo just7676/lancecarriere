@@ -6,7 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
 
-import { prepareInterview, type PrepareInterviewOutput } from "@/ai/flows/prepare-interview";
+import { prepareInterview } from "@/ai/flows/prepare-interview";
+import type { PrepareInterviewOutput } from "@/ai/types/prepare-interview-types";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {

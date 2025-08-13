@@ -6,7 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
 
-import { improveText, type ImproveTextOutput } from "@/ai/flows/improve-text";
+import { improveText } from "@/ai/flows/improve-text";
+import type { ImproveTextOutput } from "@/ai/types/improve-text-types";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {

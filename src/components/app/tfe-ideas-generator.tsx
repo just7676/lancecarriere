@@ -6,7 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
 
-import { generateTFEIdeas, type GenerateTFEIdeasOutput } from "@/ai/flows/generate-tfe-ideas";
+import { generateTFEIdeas } from "@/ai/flows/generate-tfe-ideas";
+import type { GenerateTFEIdeasOutput } from "@/ai/types/tfe-ideas-types";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {

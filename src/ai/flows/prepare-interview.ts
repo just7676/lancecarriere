@@ -4,28 +4,15 @@
  * @fileOverview A flow to generate interview questions and example answers for job seekers.
  *
  * - `prepareInterview` - A function that generates interview questions and example answers.
- * - `PrepareInterviewInput` - The input type for the `prepareInterview` function.
- * - `PrepareInterviewOutput` - The return type for the `prepareInterview` function.
  */
 
 import {ai} from '@/ai/genkit';
-import {z} from 'genkit';
-
-const PrepareInterviewInputSchema = z.object({
-  jobTitle: z.string().describe('The job title for which the user is preparing.'),
-  requiredSkills: z.string().describe('The skills required for the job.'),
-});
-export type PrepareInterviewInput = z.infer<typeof PrepareInterviewInputSchema>;
-
-const PrepareInterviewOutputSchema = z.object({
-  questionsAndAnswers: z.array(
-    z.object({
-      question: z.string().describe('An interview question.'),
-      exampleAnswer: z.string().describe('An example answer to the question.'),
-    })
-  ).describe('A list of interview questions and example answers.'),
-});
-export type PrepareInterviewOutput = z.infer<typeof PrepareInterviewOutputSchema>;
+import {
+  PrepareInterviewInputSchema,
+  PrepareInterviewOutputSchema,
+  type PrepareInterviewInput,
+  type PrepareInterviewOutput,
+} from '@/ai/types/prepare-interview-types';
 
 export async function prepareInterview(input: PrepareInterviewInput): Promise<PrepareInterviewOutput> {
   return prepareInterviewFlow(input);

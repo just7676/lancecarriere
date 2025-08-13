@@ -6,7 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
 
-import { writeProfessionalContent, type WriteProfessionalContentOutput } from "@/ai/flows/write-professional-content";
+import { writeProfessionalContent } from "@/ai/flows/write-professional-content";
+import type { WriteProfessionalContentOutput } from "@/ai/types/write-professional-content-types";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
