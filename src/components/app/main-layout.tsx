@@ -106,9 +106,9 @@ export function MainLayout() {
         </SidebarContent>
         <SidebarFooter className="mt-auto">
            <Button variant="ghost" className="w-full justify-start gap-2" asChild>
-                <a href="https://github.com/firebase/genkit/tree/main/studio/samples/lancecarriere" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO" target="_blank" rel="noopener noreferrer">
                     <Github />
-                    <span className="group-data-[collapsible=icon]:hidden">Code Source</span>
+                    <span className="group-data-[collapsible=icon]:hidden text-xs">JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO</span>
                 </a>
             </Button>
         </SidebarFooter>
