@@ -6,7 +6,6 @@ import {
   FileText,
   Lightbulb,
   PenSquare,
-  Github,
   CheckCircle,
 } from "lucide-react";
 import {
@@ -103,12 +102,7 @@ export function MainLayout() {
             })}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter className="mt-auto p-4">
-           <a href="https://github.com/JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors group-data-[collapsible=icon]:justify-center">
-                <Github className="h-4 w-4 shrink-0" />
-                <span className="group-data-[collapsible=icon]:hidden truncate">JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO</span>
-            </a>
-        </SidebarFooter>
+        <SidebarFooter className="mt-auto p-4" />
       </Sidebar>
       <SidebarInset className="flex flex-col">
         <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
