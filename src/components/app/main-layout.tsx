@@ -108,7 +108,7 @@ export function MainLayout() {
            <Button variant="outline" className="justify-start gap-2 group-data-[collapsible=icon]:h-9 group-data-[collapsible=icon]:w-9 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-0" asChild>
                 <a href="https://github.com/JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO" target="_blank" rel="noopener noreferrer">
                     <Github className="h-5 w-5" />
-                    <span className="group-data-[collapsible=icon]:hidden text-xs truncate">Code Source</span>
+                    <span className="group-data-[collapsible=icon]:hidden text-xs truncate">JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO</span>
                 </a>
             </Button>
         </SidebarFooter>
