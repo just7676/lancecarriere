@@ -7,6 +7,7 @@ import {
   Lightbulb,
   PenSquare,
   Github,
+  CheckCircle,
 } from "lucide-react";
 import {
   SidebarProvider,
@@ -26,18 +27,21 @@ import TfeIdeasGenerator from "@/components/app/tfe-ideas-generator";
 import InterviewPrep from "@/components/app/interview-prep";
 import CvGenerator from "@/components/app/cv-generator";
 import ContentWriter from "@/components/app/content-writer";
+import TextImprover from "@/components/app/text-improver";
 
 type Feature =
   | "tfe-ideas"
   | "interview-prep"
   | "cv-generator"
-  | "content-writer";
+  | "content-writer"
+  | "text-improver";
 
 const featureComponents = {
   "tfe-ideas": <TfeIdeasGenerator />,
   "interview-prep": <InterviewPrep />,
   "cv-generator": <CvGenerator />,
   "content-writer": <ContentWriter />,
+  "text-improver": <TextImprover />,
 };
 
 const featureInfo = {
@@ -60,6 +64,11 @@ const featureInfo = {
     title: "Aide à la rédaction",
     description: "Rédigez des contenus professionnels pour LinkedIn, emails, etc.",
     icon: PenSquare,
+  },
+  "text-improver": {
+    title: "Correcteur de texte",
+    description: "Améliorez vos textes en corrigeant les fautes et le style.",
+    icon: CheckCircle,
   },
 };
 
