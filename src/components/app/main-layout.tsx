@@ -44,15 +44,20 @@ const featureComponents = {
 };
 
 const featureInfo = {
-    "cover-letter-generator": {
-    title: "Lettre de motivation & CV",
-    description: "Générez une lettre de motivation percutante et obtenez des conseils pour votre CV.",
-    icon: FileText,
+    "tfc-ideas": {
+    title: "Idées de TFC",
+    description: "Générez des idées de sujets pour votre Travail de Fin de Cycle (TFC).",
+    icon: Lightbulb,
   },
   "interview-prep": {
     title: "Préparation aux entretiens",
     description: "Préparez vos entretiens d'embauche avec des questions et réponses.",
     icon: Briefcase,
+  },
+  "cover-letter-generator": {
+    title: "Lettre de motivation & CV",
+    description: "Générez une lettre de motivation percutante et obtenez des conseils pour votre CV.",
+    icon: FileText,
   },
   "content-writer": {
     title: "Aide à la rédaction",
@@ -64,15 +69,10 @@ const featureInfo = {
     description: "Améliorez vos textes en corrigeant les fautes et le style.",
     icon: CheckCircle,
   },
-  "tfc-ideas": {
-    title: "Idées de TFC",
-    description: "Générez des idées de sujets pour votre Travail de Fin de Cycle (TFC).",
-    icon: Lightbulb,
-  },
 };
 
 export function MainLayout() {
-  const [activeFeature, setActiveFeature] = useState<Feature>("cover-letter-generator");
+  const [activeFeature, setActiveFeature] = useState<Feature>("tfc-ideas");
 
   const CurrentFeature = featureComponents[activeFeature];
   const currentInfo = featureInfo[activeFeature];
