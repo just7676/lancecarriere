@@ -10,7 +10,7 @@ import {
   PanelLeft,
 } from "lucide-react";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/app/logo";
 import TfcIdeasGenerator from "@/components/app/tfc-ideas-generator";
@@ -128,10 +128,12 @@ export function MainLayout() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className="flex flex-col">
-               <div className="flex h-[60px] items-center border-b px-6">
+            <SheetContent side="left" className="flex flex-col p-0">
+               <SheetHeader className="h-[60px] flex flex-row items-center border-b px-6">
+                <SheetTitle className="sr-only">Menu</SheetTitle>
+                <SheetDescription className="sr-only">Navigation principale de l'application</SheetDescription>
                 <Logo />
-              </div>
+              </SheetHeader>
               <div className="mt-4">
                 <SidebarContent />
               </div>
