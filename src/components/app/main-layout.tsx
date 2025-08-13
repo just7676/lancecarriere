@@ -104,11 +104,11 @@ export function MainLayout() {
             })}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter className="mt-auto">
-           <Button variant="ghost" className="w-full justify-start gap-2" asChild>
+        <SidebarFooter className="mt-auto flex justify-start">
+           <Button variant="ghost" className="justify-start gap-2" asChild>
                 <a href="https://github.com/JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO" target="_blank" rel="noopener noreferrer">
-                    <Github />
-                    <span className="group-data-[collapsible=icon]:hidden text-xs">JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO</span>
+                    <Github className="h-5 w-5" />
+                    <span className="group-data-[collapsible=icon]:hidden text-xs truncate">Source Code</span>
                 </a>
             </Button>
         </SidebarFooter>
