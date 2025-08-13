@@ -94,6 +94,9 @@ export default function ContentWriter() {
                       </FormControl>
                       <SelectContent>
                         <SelectItem value="LinkedIn">LinkedIn</SelectItem>
+                        <SelectItem value="Facebook">Facebook</SelectItem>
+                        <SelectItem value="Twitter">Twitter (X)</SelectItem>
+                        <SelectItem value="Instagram">Instagram</SelectItem>
                         <SelectItem value="WhatsApp">WhatsApp</SelectItem>
                         <SelectItem value="Email de candidature">Email de candidature</SelectItem>
                       </SelectContent>
