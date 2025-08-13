@@ -21,21 +21,21 @@ import {
 } from "@/components/ui/sidebar";
 
 import { Logo } from "@/components/app/logo";
-import TfeIdeasGenerator from "@/components/app/tfe-ideas-generator";
+import TfcIdeasGenerator from "@/components/app/tfc-ideas-generator";
 import InterviewPrep from "@/components/app/interview-prep";
 import CoverLetterGenerator from "@/components/app/cover-letter-generator";
 import ContentWriter from "@/components/app/content-writer";
 import TextImprover from "@/components/app/text-improver";
 
 type Feature =
-  | "tfe-ideas"
+  | "tfc-ideas"
   | "interview-prep"
   | "cover-letter-generator"
   | "content-writer"
   | "text-improver";
 
 const featureComponents = {
-  "tfe-ideas": <TfeIdeasGenerator />,
+  "tfc-ideas": <TfcIdeasGenerator />,
   "interview-prep": <InterviewPrep />,
   "cover-letter-generator": <CoverLetterGenerator />,
   "content-writer": <ContentWriter />,
@@ -43,9 +43,9 @@ const featureComponents = {
 };
 
 const featureInfo = {
-  "tfe-ideas": {
-    title: "Idées de TFE",
-    description: "Générez des idées de sujets pour votre Travail de Fin d'Études.",
+  "tfc-ideas": {
+    title: "Idées de TFC",
+    description: "Générez des idées de sujets pour votre Travail de Fin de Cycle (TFC).",
     icon: Lightbulb,
   },
   "interview-prep": {
@@ -102,7 +102,7 @@ export function MainLayout() {
             })}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter className="mt-auto p-4" />
+        <SidebarFooter className="mt-auto" />
       </Sidebar>
       <SidebarInset className="flex flex-col">
         <main className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
