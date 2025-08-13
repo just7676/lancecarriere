@@ -20,7 +20,6 @@ import {
   SidebarInset,
   SidebarFooter,
 } from "@/components/ui/sidebar";
-import { Button } from "@/components/ui/button";
 
 import { Logo } from "@/components/app/logo";
 import TfeIdeasGenerator from "@/components/app/tfe-ideas-generator";
@@ -104,13 +103,11 @@ export function MainLayout() {
             })}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter className="mt-auto p-2">
-           <Button variant="outline" className="justify-start gap-2 group-data-[collapsible=icon]:h-9 group-data-[collapsible=icon]:w-9 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:p-0" asChild>
-                <a href="https://github.com/JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO" target="_blank" rel="noopener noreferrer">
-                    <Github className="h-5 w-5" />
-                    <span className="group-data-[collapsible=icon]:hidden text-xs truncate">JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO</span>
-                </a>
-            </Button>
+        <SidebarFooter className="mt-auto p-4">
+           <a href="https://github.com/JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors group-data-[collapsible=icon]:justify-center">
+                <Github className="h-4 w-4 shrink-0" />
+                <span className="group-data-[collapsible=icon]:hidden truncate">JUSTIN_BASHIGE2025/GDGOCUCB/BUILD_WITH_AI_DEMO</span>
+            </a>
         </SidebarFooter>
       </Sidebar>
       <SidebarInset className="flex flex-col">
