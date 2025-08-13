@@ -89,7 +89,7 @@ export function MainLayout() {
         return (
           <button
             key={key}
-            onClick={() => handleFeatureSelect(key)}
+            onClick={() => handleFeatureSelect(key as Feature)}
             className={`flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary ${
               activeFeature === key ? "bg-muted text-primary" : ""
             }`}
