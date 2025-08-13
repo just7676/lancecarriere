@@ -97,8 +97,12 @@ export default function ContentWriter() {
                         <SelectItem value="Facebook">Facebook</SelectItem>
                         <SelectItem value="Twitter">Twitter (X)</SelectItem>
                         <SelectItem value="Instagram">Instagram</SelectItem>
+                        <SelectItem value="TikTok">TikTok</SelectItem>
+                        <SelectItem value="YouTube">YouTube</SelectItem>
                         <SelectItem value="WhatsApp">WhatsApp</SelectItem>
                         <SelectItem value="Email de candidature">Email de candidature</SelectItem>
+                        <SelectItem value="Article de blog">Article de blog</SelectItem>
+                        <SelectItem value="Communiqué de presse">Communiqué de presse</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />
