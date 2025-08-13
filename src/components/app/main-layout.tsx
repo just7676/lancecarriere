@@ -23,21 +23,21 @@ import {
 import { Logo } from "@/components/app/logo";
 import TfeIdeasGenerator from "@/components/app/tfe-ideas-generator";
 import InterviewPrep from "@/components/app/interview-prep";
-import CvGenerator from "@/components/app/cv-generator";
+import CoverLetterGenerator from "@/components/app/cover-letter-generator";
 import ContentWriter from "@/components/app/content-writer";
 import TextImprover from "@/components/app/text-improver";
 
 type Feature =
   | "tfe-ideas"
   | "interview-prep"
-  | "cv-generator"
+  | "cover-letter-generator"
   | "content-writer"
   | "text-improver";
 
 const featureComponents = {
   "tfe-ideas": <TfeIdeasGenerator />,
   "interview-prep": <InterviewPrep />,
-  "cv-generator": <CvGenerator />,
+  "cover-letter-generator": <CoverLetterGenerator />,
   "content-writer": <ContentWriter />,
   "text-improver": <TextImprover />,
 };
@@ -53,9 +53,9 @@ const featureInfo = {
     description: "Préparez vos entretiens d'embauche avec des questions et réponses.",
     icon: Briefcase,
   },
-  "cv-generator": {
-    title: "CV & Lettre de motivation",
-    description: "Créez un CV et une lettre de motivation percutants.",
+  "cover-letter-generator": {
+    title: "Lettre de motivation",
+    description: "Créez une lettre de motivation percutante.",
     icon: FileText,
   },
   "content-writer": {
@@ -71,7 +71,7 @@ const featureInfo = {
 };
 
 export function MainLayout() {
-  const [activeFeature, setActiveFeature] = useState<Feature>("tfe-ideas");
+  const [activeFeature, setActiveFeature] = useState<Feature>("cover-letter-generator");
 
   const CurrentFeature = featureComponents[activeFeature];
   const currentInfo = featureInfo[activeFeature];

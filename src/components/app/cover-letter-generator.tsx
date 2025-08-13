@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
 
-import { generateCvAndCoverLetter, type GenerateCvAndCoverLetterOutput } from "@/ai/flows/generate-cv-and-cover-letter";
+import { generateCoverLetter, type GenerateCoverLetterOutput } from "@/ai/flows/generate-cover-letter";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,8 +19,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CopyButton } from "./copy-button";
 import { Skeleton } from "../ui/skeleton";
 
@@ -34,8 +33,8 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
-export default function CvGenerator() {
-  const [result, setResult] = useState<GenerateCvAndCoverLetterOutput | null>(null);
+export default function CoverLetterGenerator() {
+  const [result, setResult] = useState<GenerateCoverLetterOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
@@ -54,14 +53,14 @@ export default function CvGenerator() {
     setIsLoading(true);
     setResult(null);
     try {
-      const response = await generateCvAndCoverLetter(values);
+      const response = await generateCoverLetter(values);
       setResult(response);
     } catch (error) {
       console.error(error);
       toast({
         variant: "destructive",
         title: "Une erreur est survenue.",
-        description: "Impossible de générer les documents. Veuillez réessayer.",
+        description: "Impossible de générer la lettre de motivation. Veuillez réessayer.",
       });
     }
     setIsLoading(false);
@@ -142,7 +141,7 @@ export default function CvGenerator() {
               />
               <Button type="submit" disabled={isLoading}>
                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Générer CV et Lettre
+                Générer la Lettre de motivation
               </Button>
             </form>
           </Form>
@@ -150,41 +149,29 @@ export default function CvGenerator() {
       </Card>
 
       {isLoading && (
-        <div className="space-y-4">
-            <Skeleton className="h-10 w-[200px]" />
-            <Skeleton className="h-64 w-full" />
-        </div>
+        <Card>
+          <CardHeader>
+              <CardTitle>Lettre de motivation générée</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-2">
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-5/6" />
+              <Skeleton className="h-4 w-3/4" />
+          </CardContent>
+        </Card>
       )}
 
       {result && (
-        <Tabs defaultValue="cv" className="w-full">
-          <TabsList>
-            <TabsTrigger value="cv">CV</TabsTrigger>
-            <TabsTrigger value="cover-letter">Lettre de motivation</TabsTrigger>
-          </TabsList>
-          <TabsContent value="cv">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>CV Généré</CardTitle>
-                <CopyButton textToCopy={result.cv} />
-              </CardHeader>
-              <CardContent>
-                <p className="whitespace-pre-wrap rounded-md bg-muted p-4 text-sm">{result.cv}</p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="cover-letter">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>Lettre de motivation générée</CardTitle>
-                <CopyButton textToCopy={result.coverLetter} />
-              </CardHeader>
-              <CardContent>
-                <p className="whitespace-pre-wrap rounded-md bg-muted p-4 text-sm">{result.coverLetter}</p>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle>Lettre de motivation générée</CardTitle>
+            <CopyButton textToCopy={result.coverLetter} />
+          </CardHeader>
+          <CardContent>
+            <p className="whitespace-pre-wrap rounded-md bg-muted p-4 text-sm">{result.coverLetter}</p>
+          </CardContent>
+        </Card>
       )}
     </div>
   );
