@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Loader2 } from "lucide-react";
+import { Loader2, Sparkles } from "lucide-react";
 
 import { generateCoverLetter, type GenerateCoverLetterOutput } from "@/ai/flows/generate-cover-letter";
+import { generateCVAdvice } from "@/ai/flows/generate-cv-advice";
+import type { GenerateCVAdviceInput, GenerateCVAdviceOutput } from "@/ai/types/cv-advice-types";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import {
@@ -34,8 +36,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 export default function CoverLetterGenerator() {
-  const [result, setResult] = useState<GenerateCoverLetterOutput | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [letterResult, setLetterResult] = useState<GenerateCoverLetterOutput | null>(null);
+  const [cvAdviceResult, setCvAdviceResult] = useState<GenerateCVAdviceOutput | null>(null);
+  const [isLetterLoading, setIsLetterLoading] = useState(false);
+  const [isCvLoading, setIsCvLoading] = useState(false);
   const { toast } = useToast();
 
   const form = useForm<FormValues>({
@@ -49,12 +53,13 @@ export default function CoverLetterGenerator() {
     },
   });
 
-  async function onSubmit(values: FormValues) {
-    setIsLoading(true);
-    setResult(null);
+  async function onLetterSubmit(values: FormValues) {
+    setIsLetterLoading(true);
+    setLetterResult(null);
+    setCvAdviceResult(null);
     try {
       const response = await generateCoverLetter(values);
-      setResult(response);
+      setLetterResult(response);
     } catch (error) {
       console.error(error);
       toast({
@@ -63,7 +68,25 @@ export default function CoverLetterGenerator() {
         description: "Impossible de générer la lettre de motivation. Veuillez réessayer.",
       });
     }
-    setIsLoading(false);
+    setIsLetterLoading(false);
+  }
+
+  async function onCvSubmit() {
+    setIsCvLoading(true);
+    setCvAdviceResult(null);
+    const values: GenerateCVAdviceInput = form.getValues();
+    try {
+      const response = await generateCVAdvice(values);
+      setCvAdviceResult(response);
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Une erreur est survenue.",
+        description: "Impossible de générer les conseils pour le CV. Veuillez réessayer.",
+      });
+    }
+    setIsCvLoading(false);
   }
 
   return (
@@ -71,7 +94,7 @@ export default function CoverLetterGenerator() {
       <Card>
         <CardContent className="pt-6">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <form onSubmit={form.handleSubmit(onLetterSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <FormField
                   control={form.control}
@@ -139,8 +162,8 @@ export default function CoverLetterGenerator() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isLoading}>
-                {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+              <Button type="submit" disabled={isLetterLoading}>
+                {isLetterLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 Générer la Lettre de motivation
               </Button>
             </form>
@@ -148,7 +171,7 @@ export default function CoverLetterGenerator() {
         </CardContent>
       </Card>
 
-      {isLoading && (
+      {isLetterLoading && (
         <Card>
           <CardHeader>
               <CardTitle>Lettre de motivation générée</CardTitle>
@@ -162,14 +185,50 @@ export default function CoverLetterGenerator() {
         </Card>
       )}
 
-      {result && (
+      {letterResult && (
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle>Lettre de motivation générée</CardTitle>
-            <CopyButton textToCopy={result.coverLetter} />
+            <CopyButton textToCopy={letterResult.coverLetter} />
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <p className="whitespace-pre-wrap rounded-md bg-muted p-4 text-sm">{letterResult.coverLetter}</p>
+            <Button onClick={onCvSubmit} disabled={isCvLoading}>
+                {isCvLoading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                    <Sparkles className="mr-2 h-4 w-4" />
+                )}
+                Rédiger mon CV
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+      
+      {isCvLoading && (
+        <Card>
+            <CardHeader>
+                <CardTitle>Conseils pour votre CV</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+                <Skeleton className="h-4 w-1/3" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+                <Skeleton className="h-4 w-1/3 mt-4" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-5/6" />
+            </CardContent>
+        </Card>
+      )}
+
+      {cvAdviceResult && (
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between">
+            <CardTitle>Conseils pour votre CV</CardTitle>
+            <CopyButton textToCopy={cvAdviceResult.advice} />
           </CardHeader>
           <CardContent>
-            <p className="whitespace-pre-wrap rounded-md bg-muted p-4 text-sm">{result.coverLetter}</p>
+            <div className="whitespace-pre-wrap rounded-md bg-muted p-4 text-sm" dangerouslySetInnerHTML={{ __html: cvAdviceResult.advice.replace(/\n/g, '<br />') }}/>
           </CardContent>
         </Card>
       )}

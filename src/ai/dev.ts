@@ -6,3 +6,4 @@ import '@/ai/flows/generate-cover-letter.ts';
 import '@/ai/flows/generate-tfe-ideas.ts';
 import '@/ai/flows/prepare-interview.ts';
 import '@/ai/flows/improve-text.ts';
+import '@/ai/flows/generate-cv-advice.ts';
